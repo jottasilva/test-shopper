@@ -1,10 +1,14 @@
+
+
+import { generateText } from "./src/api";
 import app from "./src/server";
 import dotenv from 'dotenv';
 dotenv.config();
 const PORT = parseInt(`${process.env.SV_PORT || 3000}`);
+const API_KEY = process.env.API_KEY;
 // Uplad Image
-app.post('/readimgxx', (req, res) => {
-    res.send("Hello World!");
+app.get('/readimgxx',async (req, res) => {
+    await generateText("Quem descobriu o brasil, e como foi ?");
 });
 // Confirm Image
 app.patch('/confirmimg', (req, res) => {

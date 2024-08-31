@@ -10,7 +10,7 @@ const genAI = new GoogleGenerativeAI(String(API_KEY));
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 const UUID = uuidv4();
 
-async function base64image(imgbase64: string) {
+export async function base64image(imgbase64: string) {
   try {
     const base64Data = imgbase64.replace(/^data:image\/(jpeg|jpg|png|gif);base64,/, "");
     const imgBuffer = Buffer.from(base64Data, 'base64');
@@ -39,4 +39,3 @@ async function base64image(imgbase64: string) {
   }
 }
 
-export { base64image };

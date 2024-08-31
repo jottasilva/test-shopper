@@ -9,8 +9,9 @@ generator client {
 
 model Measureuser {
   id                Int      @id @default(autoincrement())
-  customer_code     String   @unique
-  measure_value     String   @unique
+  customer_code     String   
+  measure_value     String   
   measure_type      String?
+  measure_month     String
   measure_datetime  DateTime @default(now())
 }

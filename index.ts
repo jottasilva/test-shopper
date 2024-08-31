@@ -1,4 +1,5 @@
 
+import { getUserMeasures, Measure } from "./db/cruds";
 import { base64image } from "./src/api";
 import app from "./src/server";
 import dotenv from "dotenv";
@@ -33,7 +34,14 @@ app.patch("/confirm", (req, res) => {
   res.send("Confirm Image :D");
 });
 // Update Image
-app.get("/:costumer_code/list", (req, res) => {
-  const code = req.params.costumer_code;
-  res.send(code);
+app.get("/test", async (req, res) => {
+  try {
+    res.json(await getUserMeasures());
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred while fetching measures' });
+  }
+});
+app.get("/create", async (req, res) => {
+  const {name,measure} = req.body;
+  res.json(await Measure(name));
 });

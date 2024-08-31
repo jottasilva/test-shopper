@@ -13,7 +13,7 @@ export async function Measure(measure_value: string) {
     },
     });
     if (existingMeasure.length >= 1 ) {
-      return { error: "Leitura Já Realizada nesse Mês"};
+      return { error: "Esta Leitura Já foi realizada nesse Mês"};
     }
     const lastMeasure = await prisma.measureuser.findFirst({
       orderBy: { id: "desc" },

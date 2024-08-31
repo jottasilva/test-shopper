@@ -34,7 +34,7 @@ app.patch("/confirm", (req, res) => {
   res.send("Confirm Image :D");
 });
 // Update Image
-app.get("/test", async (req, res) => {
+app.get("/:costumer_code/list", async (req, res) => {
   try {
     res.json(await getUserMeasures());
   } catch (error) {
@@ -42,6 +42,6 @@ app.get("/test", async (req, res) => {
   }
 });
 app.get("/create", async (req, res) => {
-  const {name,measure} = req.body;
+  const {name} = req.body;
   res.json(await Measure(name));
 });
